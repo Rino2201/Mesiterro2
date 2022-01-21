@@ -22,11 +22,11 @@ class PostImagesController < ApplicationController
       @post_comment = PostComment.new
   end
 
-  def show
+  def destroy
     @post_image = PostImage.find(params[:id])
-    @post_comment = PostComment.new
+    @post_image.user_id = current_user.id
+    redirect_to post_images_path
   end
-
 
   private
 
